@@ -1,4 +1,4 @@
-# Desafía subir lo que has aprendido a github
+# Reto de subir lo aprendido a github
 
 ***Idioma***
 - 🇪🇸 Español

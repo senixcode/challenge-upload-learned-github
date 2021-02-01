@@ -74,7 +74,7 @@ They can be identified as follows: `--all` or `-a`
 
 | Commands | Description |
 | --- | --- |
-|`| grep <keyword>` | To filter.|
+|`| grep <keyword>` | To filter|
 |`$()` | Command substitution allows the output of a command to replace the command itself | 
 
 #### Examples

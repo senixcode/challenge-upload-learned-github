@@ -10,6 +10,7 @@
 - Basic linux commands
 - [Docker installation](https://docs.docker.com/get-docker/)
 
+> You can follow [my docker installation guide for windows](./docker-installation-windows.md)
 # Index
 - [General concepts](##General-concepts)
 - [Get start](##Get-start)

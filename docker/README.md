@@ -20,6 +20,7 @@
   - [Tricks combined with linux command](###Tricks-combined-with-linux-command)
     - [Examples](###Examples)
   - [Image](###Image)
+    - [Example with nginx](####Example-with-nginx)
   - [Container](###Containers)
   - [Volume](###Volume)
 - [CLI references](##Cli-references)
@@ -100,10 +101,65 @@ CONTAINER ID   IMAGE         COMMAND       CREATED        STATUS                
 5d6fcd02dfc3
 ```
 ### Image
+An image is like a build of any application, some examples can be mongodb, mysql, node, go, ubuntu, etc. There is [dockerhub](https://hub.docker.com/) which  is the platform where all the images already made are centered.
+> If you worked with nodejs, you could say that **dockerhub** is like npm for nodejs.
+
+#### Example-with-nginx
+
+1. We will look for the image, you cant do it in [dockerhub](https://hub.docker.com/) or through terminal, I will show you through the terminal and we will filter the official images.
+
+```bash
+[senixcode@localhost challenge-upload-learned-github]$ docker search --filter is-official=true  nginx
+NAME      DESCRIPTION                STARS     OFFICIAL   AUTOMATED
+nginx     Official build of Nginx.   14372     [OK]
+```
+2. Here we download it.
+
+```bash
+[senixcode@localhost challenge-upload-learned-github]$ docker pull nginx
+Using default tag: latest
+latest: Pulling from library/nginx
+```
+3. I will show you two ways to run an image.
+
+  - First way is interactive, that's why we put the `-it` flag on it. 
+> If you close the terminal, it will no longer be running.
+```bash
+[senixcode@localhost challenge-upload-learned-github]$ docker run -it nginx bash
+root@337c1e7a3f81:/#
+```
+  - The second way may be more useful for you. We tell it to run in the bakground `-d` and on port 4000 `-p <output port>:<internal port>`
+```bash
+[senixcode@localhost challenge-upload-learned-github]$ docker run --name my-ngnix -d -p 4000:80 nginx
+16e6124ddb4038730e6162a205b2a985cbb12cfbccfa7f230ca268881bf69872
+[senixcode@localhost challenge-upload-learned-github]$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                  NAMES
+819219ff264a   nginx     "/docker-entrypoint.…"   4 minutes ago   Up 4 minutes   0.0.0.0:4000->80/tcp   my-ngnix
+```
+ - You can verify by opening in you browser or through you terminal
+ ```bash
+ $ curl http://localhost:4000
+ ```
+> All the flag options you can find [here](https://docs.docker.com/engine/reference/commandline/run/#options) 
+
+4. You will see how to stop, start and delete it.
+
+ - To stop it or start it, you can do it with the name (NAMES) or id (CONTAINER ID), previously we passed a name with `--name`.
+  ```bash
+  $ docker stop my-nginx
+  $ docker start my-nginx
+  ```
+  - To make sure that if you have deleted use the `-a` flag.
+  ```bash
+   $ docker ps -a
+   $ docker rm my-nginx
+   $ docker ps -a
+  ``` 
 ### Container
 ### Volume
 ## Cli-references
 - [docker version](https://docs.docker.com/engine/reference/commandline/version/) 
+- [docker search](https://docs.docker.com/engine/reference/commandline/search/)
 - [docker run](https://docs.docker.com/engine/reference/commandline/run/) 
 - [docker image](https://docs.docker.com/engine/reference/commandline/image/) 
 - [docker container](https://docs.docker.com/engine/reference/commandline/container/) 

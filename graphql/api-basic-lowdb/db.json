@@ -1,0 +1,16 @@
+{
+  "aboutme": [
+    {
+      "description": "Soy un programador autodidacta, poeta y jugador de basquet.",
+      "language": "es",
+      "_id": "e7054b1c-969d-4102-a920-835e3db3e00a"
+    },
+    {
+      "description": "I am a self-taught programmer, poet and basketball player.",
+      "language": "en",
+      "_id": "01e60bb0-2655-48bb-b449-0eb65f5d33a3"
+    },
+  ],
+  "projects": [],
+  "routes": []
+}
